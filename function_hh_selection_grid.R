@@ -1,8 +1,8 @@
-# Sampling over gridded area 
+# Sampling over grided area 
 
 grid_household_selection <- function(data,
                                      cell_size,
-                                     n_grids,
+                                     target,
                                      n_buildings,
                                      path, 
                                      assign_total_buildings, 
@@ -73,7 +73,7 @@ grid_household_selection <- function(data,
   sampled_grids <- c()
   total_buildings <- 0 
   
-  while(total_buildings <= 4098){
+  while(total_buildings <= target){
     
     sampled_grid <- sample(grid_subarea$cell_id, size = 1, replace = FALSE, prob = grid_subarea$weight)
     
