@@ -1,7 +1,17 @@
 # Survey Planning Functions
 
-These R functions were developed to assist in the planning of household surveys in areas lacking a complete household listing (sampling frame). 
+R functions developed to assist in the planning of household surveys in areas lacking a complete household listing.
 
+This work is licensed under a
+[Creative Commons Attribution 4.0 International License][cc-by].
+
+[![CC BY 4.0][cc-by-image]][cc-by]
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
+[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
+[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
+
+## Description of functions
 ### function_hh_selection
 This code is used to randomly select buildings from the Open Buildings dataset, including a selection of two random replacements.
 
@@ -25,4 +35,4 @@ This code is used to randomly select buildings from the Open Buildings dataset, 
 This code is used to define urban and rural areas for studies which require a definition.
 
 ## Current state
-Beware: this code is currently under development. Please email me (jade.rae@bnitm.de) if you find any bugs. 
+Beware: this code is currently under development. For questions or comments email me (jade.rae@bnitm.de).
