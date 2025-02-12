@@ -35,4 +35,4 @@ This code is used to randomly select buildings from the Open Buildings dataset, 
 This code is used to define urban and rural areas for studies which require a definition.
 
 ## Current state
-Beware: this code is currently under development. Please email me (jade.rae@bnitm.de) if you find any bugs. 
+Beware: this code is currently under development. For questions or comments email me (jade.rae@bnitm.de).
