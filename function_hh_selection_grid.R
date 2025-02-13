@@ -6,7 +6,8 @@ grid_household_selection <- function(data,
                                      n_buildings,
                                      path, 
                                      assign_total_buildings, 
-                                     assign_selected_buildings){
+                                     assign_selected_buildings
+                                     ){
   
   # Limit to sub area (e.g. rural area)
   shapefile_filtered <- st_difference(shapefile, st_union(buffer_polygons))

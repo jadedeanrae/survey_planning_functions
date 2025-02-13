@@ -1,6 +1,7 @@
 # // Uurban/rural classification
 
-urban_rural_classification <- function(buildings){
+urban_rural_classification <- function(buildings
+                                       ){
   
   #--- Calculate building density ---
   grid <- st_make_grid(buildings, 

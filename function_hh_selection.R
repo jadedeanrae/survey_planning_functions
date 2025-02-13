@@ -4,7 +4,8 @@ household_selection <- function(data,
                                 n_buildings,
                                 district = NULL,
                                 path,
-                                assign_name){
+                                assign_name
+                                ){
   
   
   if(!is.null(district)){

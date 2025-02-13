@@ -3,7 +3,8 @@
 limit_gee_sub_area <- function(shapefile, 
                                data,
                                district = NULL,
-                               crs = NULL){
+                               crs = NULL
+                               ){
   
   if(!is.null(district)){
     study_sh <- subset(shapefile, (ADM2_EN==district))
