@@ -1,6 +1,6 @@
 # Survey Planning Functions
 
-R functions developed to assist in the planning of household surveys in areas lacking a complete household listing.
+R functions for random selection of households in a study area.
 
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License][cc-by].
@@ -12,27 +12,11 @@ This work is licensed under a
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
 ## Description of functions
-### function_hh_selection
-This code is used to randomly select buildings from the Open Buildings dataset, including a selection of two random replacements.
 
-*Some steps are required before using this code*
+The steps used to perform random household selection are broken down into a series of functions in separate R scripts, organised as follows:
 
-**1. Study area shapefile**
-- Download a shapefile for the study area
-- You may need to process the shapefile in R (limit the shapefile to the specific area of interest)
-
-**2. Input shapefile into the Google Earth Engine (GEE)**
-- Open the GEE (https://code.earthengine.google.com)
-- On the left-hand panel, select "Assets" and upload the study area shapefile and associated files (.shp, .dbf, .prj, .shx)
-- Import the shapefile into the script
-
-**3. Run script to access the Open Buildings dataset for the study area**
-- Paste the script in "GEE_script" into the window
-- On the right-hand panel, select "Tasks" and press "Run" on the unsubmitted task
-- This will download the Open Buildings dataset to your Google Drive. This data is then used in both R scripts. 
-
-### function_classification
-This code is used to define urban and rural areas for studies which require a definition.
-
-## Current state
-Beware: this code is currently under development. For questions or comments email me (jade.rae@bnitm.de).
+* *function_study_shapefile* is used to limit a shapefile to a study area.
+* *function_classification* is used when there is no clear definition of urban and rural areas but this is needed for study planning. In this function, building density is used to approximate urban and rural areas.
+* *function_hh_selection* is used to perform simple random household selection.
+* *function_selection_grid* is used to perform weight-based random selection of grid cells over a study area, and then simple random sampling within grid cells.
+* *function_hh_replacements* is used to select replacement buildings within a pre-defined distance from the original household selection.
