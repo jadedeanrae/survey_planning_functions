@@ -19,7 +19,7 @@ The steps used to perform random household selection are broken down into a seri
 * *function_classification* is used when there is no clear definition of urban and rural areas but this is needed for study planning. In this function, building density is used to approximate urban and rural areas.
 * *function_hh_selection* is used to perform simple random household selection.
 * *function_selection_grid* is used to perform weight-based random selection of grid cells over a study area, and then simple random sampling within grid cells.
-* *function_hh_replacements* is used to select replacement buildings within a pre-defined distance from the original household selection. This function requires that *function_hh_selection* or *function_selection_grid* be run.
+* *function_hh_replacements* is used to select replacement buildings within a pre-defined distance from the original household selection. **This function requires that household selection is done first (by running *function_hh_selection* or *function_selection_grid***).
 
 ### Disclaimers
 This is still a work in progress and the code may be updated in the future. If there is a bug on the current GitHub version, just drop me an email with a screenshot.
