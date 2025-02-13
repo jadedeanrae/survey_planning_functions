@@ -7,7 +7,7 @@ replacement_selection <- function(data,
                                   n_nearby = 2,
                                   path,
                                   assign_name
-){
+                                  ){
   
   #--- Reform data --- 
   remaining_builds <- data[!apply(st_equals(data, sample, sparse = FALSE), 1, any), ]
