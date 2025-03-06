@@ -1,4 +1,4 @@
-# // Uurban/rural classification
+# // Urban/rural classification
 
 urban_rural_classification <- function(buildings,
                                        path
