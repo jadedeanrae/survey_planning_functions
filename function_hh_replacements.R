@@ -3,18 +3,19 @@
 replacement_selection <- function(data, 
                                   sample, 
                                   district = NULL, 
-                                  max_distance = 100, 
+                                  max_distance = 30, 
                                   n_nearby = 2,
                                   path,
                                   assign_name
                                   ){
   
   #--- Reform data --- 
-  remaining_builds <- data[!apply(st_equals(data, sample, sparse = FALSE), 1, any), ]
+  # remaining_builds <- data[!apply(st_equals(data, sample, sparse = FALSE), 1, any), ]
+  remaining_builds <- anti_join(data, sample, by = "id")
   rem_builds <- as.data.frame(remaining_builds)
-  rem_builds_coords <- select(rem_builds, c("longitude", "latitude"))
+  rem_builds_coords <- dplyr::select(rem_builds, c("longitude", "latitude"))
   sample_coords <- as.data.frame(sample)
-  sample_coords <- select(sample_coords, c("longitude", "latitude"))
+  sample_coords <- dplyr::select(sample_coords, c("longitude", "latitude"))
   
   #--- Find points within distance from sample --- 
   distances_list <- list()
@@ -68,7 +69,7 @@ replacement_selection <- function(data,
   
   assign(assign_name, replacement_list, envir = .GlobalEnv)
   
-  write_csv(replacement_list, paste(path, "replacement_buildings.csv"))
+  write_csv(replacement_list, paste0(path, assign_name, ".csv"))
   
 }
 

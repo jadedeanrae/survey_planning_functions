@@ -9,7 +9,7 @@ grid_household_selection <- function(data,
                                      assign_selected_buildings
                                      ){
   
-  # Limit to sub area (e.g. rural area)
+  # Limit to sub area
   shapefile_filtered <- st_difference(shapefile, st_union(buffer_polygons))
   buildings_filtered <- st_difference(data, st_union(buffer_polygons))
   
@@ -44,10 +44,10 @@ grid_household_selection <- function(data,
       cell_id = cell_id.y)
   
   ggplot() + 
-    geom_sf(data = grid_with_counts_yes, fill = NA) +
-    geom_sf(data = shapefile_filtered)
+    geom_sf(data = shapefile_filtered) + 
+    geom_sf(data = grid_with_counts_yes, fill = NA)
   
-  # Intersection between grid and sub area (e.g. remove urban areas)
+  # Intersection between grid and sub area
   grid_subarea <- st_intersection(grid_with_counts_yes, shapefile_filtered)
   
   ggplot() + 
@@ -89,6 +89,8 @@ grid_household_selection <- function(data,
   
   write_csv(selected_grid_subarea, paste0(path, "grids_selected.csv"))
   
+  selected_grid_subarea <- st_as_sf(selected_grid_subarea, sf_column_name = "x")
+  
   ggplot() +
     geom_sf(data = shapefile, fill = NA) +
     geom_sf(data = grid_subarea, fill = "grey90") +
@@ -110,6 +112,8 @@ grid_household_selection <- function(data,
   
   #--- Random selection in selected grids ---
   subarea_buildings <- st_intersection(selected_grid_subarea, centroids_sf)
+  
+  write_csv(subarea_buildings, paste0(path, "/all_buildings.csv"))
   
   # Sample buildings
   set.seed(123)
