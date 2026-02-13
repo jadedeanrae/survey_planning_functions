@@ -26,7 +26,7 @@ urban_rural_classification <- function(buildings,
   grid_with_counts <- st_join(grid, grid_counts, left = TRUE) %>%
     mutate(count = replace_na(count, 0))
   
-  write_sf(grid_with_counts, paste0(path, "building_density_", cell_size, "m.shp"))
+  # write_sf(grid_with_counts, paste0(path, "building_density_", cell_size, "m.shp"))
   
   grid_with_counts_yes <- grid_with_counts %>% 
     filter(count > 0)
@@ -37,7 +37,7 @@ urban_rural_classification <- function(buildings,
     theme_bw() + 
     labs(fill = bquote("Number of\nbuildings per " * .(cell_size) * " m²"))
   
-  ggsave(paste0(path, "buildings_per_", cell_size, "m.png"), dpi = 300)
+  # ggsave(paste0(path, "buildings_per_", cell_size, "m.png"), dpi = 300)
   
   # Keep grids with enough buildings
   grid_with_counts_yes <- grid_with_counts %>% 
@@ -107,7 +107,7 @@ urban_rural_classification <- function(buildings,
                            which_north = "true",  
                            style = north_arrow_fancy_orienteering) 
   
-  ggsave(paste0(path, "urban_clumps.png"), dpi = 500)
+  # ggsave(paste0(path, "urban_clumps.png"), dpi = 500)
   
   # Create buffer around polygons
   buffer_polygons <- st_buffer(selected_polygons_sf, 250)
@@ -133,8 +133,8 @@ urban_rural_classification <- function(buildings,
                            which_north = "true",  
                            style = north_arrow_fancy_orienteering) 
   
-  write_sf(buffer_polygons, paste0(path, "shapefiles/urban_clumps_buffer.shp"))
-  ggsave(paste0(path, "urban_clumps_buffer.png"), dpi = 500, height = 5, width = 7)
+  # write_sf(buffer_polygons, paste0(path, "shapefiles/urban_clumps_buffer.shp"))
+  # ggsave(paste0(path, "urban_clumps_buffer.png"), dpi = 500, height = 5, width = 7)
   
   # Number of buildings in clumps v. no-clump
   buildings_clumps <- st_join(buildings, buffer_polygons, join = st_within)
@@ -147,9 +147,11 @@ urban_rural_classification <- function(buildings,
     summarise(total_buildings = n(),
               percent = round(total_buildings / nrow(buildings) * 100, 2))
   
-  write_sf(buildings_clumps, paste0(path, "shapefiles/urban_clumps.shp"))
+  # write_sf(buildings_clumps, paste0(path, "shapefiles/urban_clumps.shp"))
+  # 
+  # write_csv(sum, paste0(path, "urban_clumps_wbuffer_size.csv"))
   
-  write_csv(sum, paste0(path, "urban_clumps_wbuffer_size.csv"))
+  write_csv(buildings_clumps_df, "data/processed/household_selection/full_samplingframe.csv")
   
   assign("buildings_clumps", buildings_clumps, envir = .GlobalEnv)
   assign("buffer_polygons", buffer_polygons, envir = .GlobalEnv)
