@@ -10,7 +10,10 @@ grid_household_selection <- function(data,
                                      ){
   
   # Limit to sub area
+  buffer_polygons <- st_transform(buffer_polygons, st_crs(shapefile))
   shapefile_filtered <- st_difference(shapefile, st_union(buffer_polygons))
+  
+  buffer_polygons <- st_transform(buffer_polygons, st_crs(data))
   buildings_filtered <- st_difference(data, st_union(buffer_polygons))
   
   # Create the grid

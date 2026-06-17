@@ -151,7 +151,7 @@ urban_rural_classification <- function(buildings,
   # 
   # write_csv(sum, paste0(path, "urban_clumps_wbuffer_size.csv"))
   
-  write_csv(buildings_clumps_df, "data/processed/household_selection/full_samplingframe.csv")
+  write_csv(buildings_clumps_df, "01_data/processed/household_selection/full_samplingframe.csv")
   
   assign("buildings_clumps", buildings_clumps, envir = .GlobalEnv)
   assign("buffer_polygons", buffer_polygons, envir = .GlobalEnv)
